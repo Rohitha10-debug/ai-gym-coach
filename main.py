@@ -52,7 +52,22 @@ def main():
     workout_started = st.session_state.get("workout_started", False)
     
     with st.sidebar:
-        st.title("🏋️‍♂️ Apna AI Coach")
+        st.markdown("""
+<div style="display: flex; align-items: center; gap: 10px; padding: 4px 0;">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 5v14"/>
+        <path d="M18 5v14"/>
+        <path d="M2 9v6"/>
+        <path d="M22 9v6"/>
+        <path d="M6 12h12"/>
+        <rect x="4" y="7" width="2" height="10" rx="1"/>
+        <rect x="18" y="7" width="2" height="10" rx="1"/>
+        <rect x="1" y="10" width="2" height="4" rx="1"/>
+        <rect x="21" y="10" width="2" height="4" rx="1"/>
+    </svg>
+    <span style="font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #FFFFFF;">AI Coach</span>
+</div>
+""", unsafe_allow_html=True)
 
         if st.session_state.username:
             st.caption(f"👤 Login as {st.session_state.username}")
@@ -173,7 +188,7 @@ def main():
 
     if st.session_state.get("coach_feedback"):
         st.markdown("")
-        st.success(f"🤖 **Coach:** {st.session_state.coach_feedback}")
+        st.success(st.session_state.coach_feedback)
 
     if not workout_started:
         st.markdown(
@@ -187,7 +202,7 @@ def main():
                 margin-top: 32px;
                 margin-bottom: 32px;
             ">
-                <h2 style="color:#ccc; margin-bottom:8px;">👈 Set your workout plan</h2>
+                <h2 style="color:#ccc; margin-bottom:8px;">Set your workout plan</h2>
                 <p style="font-size:1.05rem;">
                     Choose your exercise, sets and reps in the sidebar,<br>
                     then click <strong>Start Workout</strong> to activate the camera and AI coach.
