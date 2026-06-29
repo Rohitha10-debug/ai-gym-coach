@@ -43,15 +43,6 @@ ai-gym-coach/
 └── README.md
 ```
 
-## Installation
-
-```bash
-git clone https://github.com/Rohitha10-debug/ai-gym-coach.git
-cd ai-gym-coach
-
-pip install -r requirements.txt
-streamlit run main.py
-```
 
 ## Author
 
