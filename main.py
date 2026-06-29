@@ -16,7 +16,19 @@ from services.coaching.llm import LLMCoach
 from services.coaching.tts import TextToSpeech
 from services.coaching.voice_pipeline import VoicePipeline, autoplay_audio
 
-  
+def get_ice_servers():
+    try:
+        metered_key = st.secrets.get("METERED_SECRET_KEY", "")
+        if metered_key:
+            import requests
+            response = requests.get(
+                f"https://rohitha.metered.live/api/v1/turn/credentials?apiKey={metered_key}"
+            )
+            return response.json()
+    except:
+        pass
+    return [{"urls": ["stun:stun.l.google.com:19302"]}]  
+
 def main():
     st.set_page_config(
         page_icon="🏋️‍♀️",
@@ -216,15 +228,7 @@ def main():
     key="exercise-analysis",
     mode=WebRtcMode.SENDRECV,
     video_processor_factory=VideoProcessorClass,
-    rtc_configuration={
-        "iceServers": [
-            {"urls": ["stun:stun.l.google.com:19302"]},
-            {"urls": ["stun:stun1.l.google.com:19302"]},
-            {"urls": ["stun:stun2.l.google.com:19302"]},
-            {"urls": ["stun:stun3.l.google.com:19302"]},
-            {"urls": ["stun:stun4.l.google.com:19302"]},
-        ]
-    },
+    rtc_configuration={"iceServers": get_ice_servers()},
     media_stream_constraints={"video": True, "audio": False},
     async_processing=True
 )
