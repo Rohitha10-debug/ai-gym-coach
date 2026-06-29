@@ -28,7 +28,7 @@ def get_ice_servers():
     except:
         pass
     return [{"urls": ["stun:stun.l.google.com:19302"]}]  
-
+    
 def main():
     st.set_page_config(
         page_icon="🏋️‍♀️",
@@ -228,7 +228,15 @@ def main():
     key="exercise-analysis",
     mode=WebRtcMode.SENDRECV,
     video_processor_factory=VideoProcessorClass,
-    rtc_configuration={"iceServers": get_ice_servers()},
+    rtc_configuration={
+        "iceServers": [
+            {"urls": ["stun:stun.l.google.com:19302"]},
+            {"urls": ["stun:stun1.l.google.com:19302"]},
+            {"urls": ["stun:stun2.l.google.com:19302"]},
+            {"urls": ["stun:stun3.l.google.com:19302"]},
+            {"urls": ["stun:stun4.l.google.com:19302"]},
+        ]
+    },
     media_stream_constraints={"video": True, "audio": False},
     async_processing=True
 )
