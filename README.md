@@ -12,7 +12,6 @@ An AI-powered fitness coaching application that combines real-time pose estimati
 * Real-time exercise tracking using computer vision
 * Pose detection and repetition counting
 * AI-driven voice feedback and workout guidance
-* Personalized workout plans
 * Workout history and performance analytics
 * Interactive Streamlit user interface
 
