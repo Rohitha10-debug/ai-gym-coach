@@ -48,4 +48,4 @@ ai-gym-coach/
 
 **Rohitha Panchamukhi M**
 
-AI & Machine Learning | Data Science | Data Analytics | Computer Vision
+AI & Machine Learning | Data Science | Data Analytics | 
